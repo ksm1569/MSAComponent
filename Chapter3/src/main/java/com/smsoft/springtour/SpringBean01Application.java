@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+import javax.print.attribute.standard.MediaSize;
 import java.math.BigDecimal;
 import java.util.Locale;
 
@@ -14,15 +15,15 @@ import java.util.Locale;
 @SpringBootApplication
 public class SpringBean01Application {
     public static void main(String[] args) {
-        ConfigurableApplicationContext ctxt = SpringApplication.run(SpringBean01Application.class, args);
+        ConfigurableApplicationContext ctx = SpringApplication.run(SpringBean01Application.class, args);
 
-        PriceUnit defaultPriceUnit = ctxt.getBean("priceUnit", PriceUnit.class);
+        PriceUnit defaultPriceUnit = ctx.getBean("priceUnit", PriceUnit.class);
         log.info("Price #1 : {}", defaultPriceUnit.format(BigDecimal.valueOf(10.2)));
 
-        PriceUnit wonPriceUnit = ctxt.getBean("wonPriceUnit", PriceUnit.class);
+        PriceUnit wonPriceUnit = ctx.getBean("wonPriceUnit", PriceUnit.class);
         log.info("Price #2 : {}", wonPriceUnit.format(BigDecimal.valueOf(1000)));
 
-        ctxt.close();
+        ctx.close();
     }
 
     @Bean(name = "priceUnit")
@@ -34,5 +35,4 @@ public class SpringBean01Application {
     public PriceUnit wonPriceUnit() {
         return new PriceUnit(Locale.KOREA);
     }
-
 }
