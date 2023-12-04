@@ -2,6 +2,7 @@ package com.smsoft.springtour.domain.format;
 
 import org.springframework.util.StringUtils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -18,5 +19,9 @@ public class DateFormatter implements Formatter<Date>{
     @Override
     public String of(Date target) {
         return simpleDateFormat.format(target);
+    }
+
+    public Date parse(String dateString) throws ParseException {
+        return simpleDateFormat.parse(dateString);
     }
 }
