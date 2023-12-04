@@ -13,7 +13,7 @@ public class ProductOrder {
     private String buyerName;
 
     public ProductOrder(BigDecimal orderAmount, LocalDateTime orderAt, String buyerName) {
-        if (orderAmount == null || orderAt == null || StringUtils.hasText(buyerName))
+        if (orderAmount == null || orderAt == null || !StringUtils.hasLength(buyerName))
             throw new IllegalArgumentException("One of args is null");
 
         this.orderAmount = orderAmount;
