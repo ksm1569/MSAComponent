@@ -8,7 +8,7 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
 public class PrintableBeanPostProcessor implements BeanPostProcessor {
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        if ("lifecycleComponent".equals(beanName)) {
+        if ("lifeCycleComponent".equals(beanName)) {
             log.error("Called postProcessBeforeInitialization() for : {}", beanName);
         }
 
@@ -17,7 +17,7 @@ public class PrintableBeanPostProcessor implements BeanPostProcessor {
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        if ("lifecycleComponent".equals(beanName)) {
+        if ("lifeCycleComponent".equals(beanName)) {
             log.error("Called postProcessAfterInitialization() for : {}", beanName);
         }
 
