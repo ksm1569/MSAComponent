@@ -16,6 +16,7 @@ public class HotelController {
         System.out.println("getHotels");
     }
 
+    // http://localhost:8080/hotels?open
     @GetMapping(path = "/hotels", params = "open")
     public void getHotelsByOpen() {
         System.out.println("getHotelsByOpen");
