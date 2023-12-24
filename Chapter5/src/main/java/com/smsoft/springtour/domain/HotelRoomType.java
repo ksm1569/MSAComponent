@@ -22,6 +22,9 @@ public enum HotelRoomType {
             ));
 
     private final String param;
+
+    // enum 상수를 선언할때 json 객체 값으로 사용될 값을 인수로 입력
+    // ex) SINGLE상수는 문자열 "single" 이 param 값으로 할당
     HotelRoomType(String param) {
         this.param = param;
     }

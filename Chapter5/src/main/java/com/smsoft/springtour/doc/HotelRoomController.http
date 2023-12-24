@@ -1,0 +1,8 @@
+POST http://localhost:8080/hotels/2/rooms
+Content-Type: application/json
+
+{
+  "roomNumber": "sumin-hotel-123",
+  "roomType": "double",
+  "originalPrice": "200.00"
+}
