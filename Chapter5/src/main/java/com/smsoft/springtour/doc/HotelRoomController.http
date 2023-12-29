@@ -6,3 +6,13 @@ Content-Type: application/json
   "roomType": "double",
   "originalPrice": "200.00"
 }
+
+
+### validation error. field : hotelRoomType, code : NotNull, message : roomType can`t be null
+
+PUT http://localhost:18080/hotels/2/rooms/sumin-hotel-123
+Content-Type: application/json
+
+{
+  "originalPrice": "150.00"
+}

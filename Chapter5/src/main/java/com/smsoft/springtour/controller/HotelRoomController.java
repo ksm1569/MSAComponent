@@ -38,11 +38,10 @@ public class HotelRoomController {
     ) {
         if(bindingResult.hasErrors()) {
             FieldError fieldError = bindingResult.getFieldError();
-            String errorMessage = new StringBuffer("validation error.")
-                    .append(" field : ").append(fieldError.getField())
-                    .append(", code : ").append(fieldError.getCode())
-                    .append(", message : ").append(fieldError.getDefaultMessage())
-                    .toString();
+            String errorMessage = "validation error." +
+                    " field : " + fieldError.getField() +
+                    ", code : " + fieldError.getCode() +
+                    ", message : " + fieldError.getDefaultMessage();
 
             System.out.println(errorMessage);
 
