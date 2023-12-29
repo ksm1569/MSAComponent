@@ -1,4 +1,4 @@
-POST http://localhost:8080/hotels/2/rooms
+POST http://localhost:18080/hotels/2/rooms
 Content-Type: application/json
 
 {
