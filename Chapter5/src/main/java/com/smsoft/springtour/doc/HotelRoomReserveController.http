@@ -1,0 +1,8 @@
+POST http://127.0.0.1:18080/hotels/2/rooms/sumin-hotel-123/reserve
+Content-Type: application/json
+
+{
+  "name": "kim su min",
+  "checkInDate" : "2023-12-29",
+  "checkOutDate" : "2022-12-29"
+}
