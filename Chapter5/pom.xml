@@ -18,6 +18,7 @@
     </properties>
 
     <dependencies>
+        <!-- JSR-303 구현체 사용 하려고 주입-->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>

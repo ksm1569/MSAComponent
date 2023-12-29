@@ -1,6 +1,7 @@
 package com.smsoft.springtour.controller;
 
 import com.smsoft.springtour.controller.request.HotelRoomRequest;
+import com.smsoft.springtour.controller.request.HotelRoomUpdateRequest;
 import com.smsoft.springtour.controller.response.DeleteResultResponse;
 import com.smsoft.springtour.controller.response.HotelRoomIdResponse;
 import com.smsoft.springtour.controller.response.HotelRoomResponse;
@@ -11,8 +12,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
@@ -24,6 +28,32 @@ public class HotelRoomController {
 
     private static final String HEADER_CREATED_AT = "X-CREATED-AT";
     private final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX");
+
+    @PutMapping(path = "/hotels/{hotelId}/rooms/{roomNumber}")
+    public ResponseEntity<HotelRoomIdResponse> updateHotelRoom(
+            @PathVariable Long hotelId,
+            @PathVariable String roomNumber,
+            @Valid @RequestBody HotelRoomUpdateRequest hotelRoomUpdateRequest,
+            BindingResult bindingResult
+    ) {
+        if(bindingResult.hasErrors()) {
+            FieldError fieldError = bindingResult.getFieldError();
+            String errorMessage = new StringBuffer("validation error.")
+                    .append(" field : ").append(fieldError.getField())
+                    .append(", code : ").append(fieldError.getCode())
+                    .append(", message : ").append(fieldError.getDefaultMessage())
+                    .toString();
+
+            System.out.println(errorMessage);
+
+            return ResponseEntity.badRequest().build();
+        }
+
+        System.out.println(hotelRoomUpdateRequest.toString());
+        HotelRoomIdResponse body = HotelRoomIdResponse.from(1_002_003_004L);
+
+        return ResponseEntity.ok(body);
+    }
 
     @PostMapping(path = "/hotels/{hotelId}/rooms")
     public ResponseEntity<HotelRoomResponse> createHotelRoom(
